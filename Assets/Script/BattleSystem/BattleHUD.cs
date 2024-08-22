@@ -17,8 +17,14 @@ public class BattleHUD : MonoBehaviour
         HPText = unit.CurrentHealth;
     }
 
+    public void SetEnemy(EnemyUnit unit)
+    {
+
+    }
+
     public void SetHP(int hp)
     {
         HPSlider.value=hp;
+        HPText = hp;
     }
 }

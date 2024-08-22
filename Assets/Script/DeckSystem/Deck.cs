@@ -56,8 +56,9 @@ public class Deck : MonoBehaviour
         } 
     }
 
-    public void DrawHand(int amount=7)
+    public void DrawHand()
     {
+        int amount = TurnSystem.AvailCardSlots.Length;
         for(int i= 0; 1 < amount; i++)
         {
             if (_Deckpile.Count <= 0)
@@ -85,6 +86,15 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         InstantiateDeck();
+    }
+    private void OnEnable()
+    {
+        TurnSystem.Instance.OnPlayerTurnStart.AddListener(DrawHand);
+    }
+
+    private void OnDisable()
+    {
+        TurnSystem.Instance.OnPlayerTurnStart.RemoveListener(DrawHand);
     }
     #endregion
 }
