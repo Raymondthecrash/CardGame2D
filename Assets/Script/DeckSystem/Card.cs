@@ -30,6 +30,9 @@ public class Card : MonoBehaviour
         Deck.Instance.Discardpile(this);
 
         // Any other effects of playing the card...
+        
+        // call this when a card is played
+        //ComboSystem.Instance.OnCardPlayed(playedCard.CardData);
 
         // End the player's turn
         TurnSystem.Instance.EndPlayerTurn();
@@ -48,8 +51,5 @@ public class Card : MonoBehaviour
         //_nameText.color = isPlayable ? Color.black : Color.gray;
         //_descriptionText.color = isPlayable ? Color.black : Color.gray;
     }
-
-    // call this when a card is played
-    ComboSystem.Instance.OnCardPlayed(playedCard.CardData);
     #endregion
 }

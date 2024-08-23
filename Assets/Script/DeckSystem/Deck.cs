@@ -58,7 +58,7 @@ public class Deck : MonoBehaviour
 
     public void DrawHand()
     {
-        int amount = TurnSystem.AvailCardSlots.Length;
+        int amount = TurnSystem.Instance.AvailCardSlots.Length;
         for(int i= 0; 1 < amount; i++)
         {
             if (_Deckpile.Count <= 0)

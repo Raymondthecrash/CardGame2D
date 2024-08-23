@@ -5,10 +5,10 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance { get; private set; }
 
-    [SerializeField] private List<Enemy> enemyPrefabs;
+    [SerializeField] private List<EnemyUnit> enemyPrefabs;
     [SerializeField] private Transform enemySpawnPoint;
 
-    private List<Enemy> activeEnemies = new List<Enemy>();
+    private List<EnemyUnit> activeEnemies = new List<EnemyUnit>();
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
         // Spawn new enemies
         foreach (var enemyPrefab in enemyPrefabs)
         {
-            Enemy newEnemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
+            EnemyUnit newEnemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
             activeEnemies.Add(newEnemy);
         }
     }
@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
         return activeEnemies.Count == 0;
     }
 
-    public void RemoveEnemy(Enemy enemy)
+    public void RemoveEnemy(EnemyUnit enemy)
     {
         activeEnemies.Remove(enemy);
         Destroy(enemy.gameObject);
