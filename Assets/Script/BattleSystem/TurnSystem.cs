@@ -80,6 +80,7 @@ public class TurnSystem : MonoBehaviour
 
     private void Start()
     {
+        Awake(); 
         StartBattle();
     }
 

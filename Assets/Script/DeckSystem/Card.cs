@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     #region Fields and Properties
 
     [field: SerializeField] public CardScript CardData { get; private set; }
+    private bool isPlayable;
 
     #endregion
 
@@ -39,7 +40,7 @@ public class Card : MonoBehaviour
     }
 
     //put this into card class
-    public void SetPlayable(bool isPlayable)
+    /*public void SetPlayable(bool isPlayable)
     {
         if (_cardButton != null)
         {
@@ -50,6 +51,34 @@ public class Card : MonoBehaviour
         GetComponent<Image>().color = cardColor;
         //_nameText.color = isPlayable ? Color.black : Color.gray;
         //_descriptionText.color = isPlayable ? Color.black : Color.gray;
+    }
+    */
+    // Method to set the card as playable or not playable
+    public void SetPlayable(bool playable)
+    {
+        isPlayable = playable;
+
+        Color cardColor = isPlayable ? Color.white : Color.gray;
+        GetComponent<Image>().color = cardColor;
+
+        /*if (_nameText != null)
+            _nameText.color = isPlayable ? Color.black : Color.gray;
+
+        if (_descriptionText != null)
+            _descriptionText.color = isPlayable ? Color.black : Color.gray;
+    */
+        
+
+     }
+
+    //incorporate into CardPlay
+    private void OnMouseDown()
+    {
+        if (isPlayable)
+        {
+            PlayCard();
+  
+        }
     }
     #endregion
 }
