@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+
     public bool AllEnemiesDefeated()
     {
         return activeEnemies.Count == 0;

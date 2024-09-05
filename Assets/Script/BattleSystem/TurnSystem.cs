@@ -52,7 +52,8 @@ public class TurnSystem : MonoBehaviour
 {
     public Transform[] CardSlots;
     public bool[] AvailCardSlots;
-
+    EnemyManager enemyManager;
+    PlayerManager playerManager;
     public static TurnSystem Instance { get; private set; }
 
     public GameState CurrentState { get; private set; }
@@ -94,6 +95,12 @@ public class TurnSystem : MonoBehaviour
 
         // Transition to player turn after a short delay
         StartCoroutine(TransitionToState(GameState.PlayerTurn));
+    }
+
+    public void StartPlayerTurn()
+    {
+        Deck.Instance.DrawHand();
+        EndPlayerTurn();
     }
 
     public void EndPlayerTurn()
@@ -141,6 +148,7 @@ public class TurnSystem : MonoBehaviour
     private IEnumerator ProcessEnemyTurn()
     {
         // Simulate enemy actions
+        PlayerManager.Instance.TakeDamage(50);
         yield return new WaitForSeconds(1f); // Simulated enemy turn duration
 
         // Check for win/loss conditions after enemy turn
@@ -169,7 +177,7 @@ public class TurnSystem : MonoBehaviour
     {
         // Implement your loss condition logic here
         // For example, check if player's health is zero
-        return PlayerManager.Instance.IsPlayerDefeated();
+            return PlayerManager.Instance.IsPlayerDefeated();
     }
 
 }

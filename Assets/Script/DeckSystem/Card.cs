@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CardUI))]
 public class Card : MonoBehaviour
 {
     #region Fields and Properties

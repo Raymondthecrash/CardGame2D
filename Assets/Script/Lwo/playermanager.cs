@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         PlayerPrefabs.CurrentHealth -= damage;
+        UpdateHealthUI();
         if (PlayerPrefabs.CurrentHealth <= 0)
         {
             PlayerPrefabs.CurrentHealth = 0;
