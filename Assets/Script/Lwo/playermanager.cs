@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         PlayerPrefabs.CurrentHealth = PlayerPrefabs.MaxHealth;
+        UpdateHealthUI();
         //PlayerPrefabs[1].CurrentHealth = PlayerPrefabs[1].MaxHealth;
         //PlayerPrefabs[2].CurrentHealth = PlayerPrefabs[2].MaxHealth;
     }

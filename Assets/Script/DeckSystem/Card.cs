@@ -8,16 +8,39 @@ public class Card : MonoBehaviour
 {
     #region Fields and Properties
 
-    [field: SerializeField] public CardScript CardData { get; private set; }
+    [field:SerializeField] public CardScript CardData { get; private set; }
     private bool isPlayable;
+    [SerializeField] private CardUI _cardUI; // Ensure this is assigned in the Inspector
 
     #endregion
 
 
     #region Methods
 
+    /*Alternative SetUp code
+     *  public void SetUp(CardScript cardData)
+    {
+        if (_cardUI != null)
+        {
+            _cardUI.SetUp(cardData); // Pass the CardScript data to CardUI
+        }
+        else
+        {
+            Debug.LogError("_cardUI is null!");
+        }
+    }
+     */
     public void SetUp(CardScript data)
     {
+        //make sue to check later if this double setup's or not
+        if (_cardUI != null)
+        {
+            _cardUI.SetUp(CardData); // Pass the CardScript data to CardUI
+        }
+        else
+        {
+            Debug.LogError("_cardUI is null!");
+        }
         CardData = data;
         GetComponent<CardUI>().SetCardImage();
     }

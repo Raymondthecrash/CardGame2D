@@ -52,8 +52,8 @@ public class TurnSystem : MonoBehaviour
 {
     public Transform[] CardSlots;
     public bool[] AvailCardSlots;
-    EnemyManager enemyManager;
-    PlayerManager playerManager;
+    //EnemyManager enemyManager;
+    //PlayerManager playerManager;
     public static TurnSystem Instance { get; private set; }
 
     public GameState CurrentState { get; private set; }
@@ -148,7 +148,7 @@ public class TurnSystem : MonoBehaviour
     private IEnumerator ProcessEnemyTurn()
     {
         // Simulate enemy actions
-        PlayerManager.Instance.TakeDamage(50);
+        PlayerManager.Instance.TakeDamage(50); 
         yield return new WaitForSeconds(1f); // Simulated enemy turn duration
 
         // Check for win/loss conditions after enemy turn

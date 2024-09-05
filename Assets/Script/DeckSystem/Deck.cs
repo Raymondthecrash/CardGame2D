@@ -30,12 +30,15 @@ public class Deck : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        _Deckpile = new List<Card>(); // Ensure this is called before adding cards to _Deckpile
     }
     private void InstantiateDeck()
     {
         for (int i = 0; i < _PlayerDeck.CardsInCollection.Count; i++)
         {
-            Card card = Instantiate(_CardPrefab); //instantiates the Card Prefab as child of the Card Canvas == as UI
+            Card card = Instantiate(_CardPrefab
+                //_cardCanvas.transform
+            ); //instantiates the Card Prefab as child of the Card Canvas == as UI
             card.SetUp(_PlayerDeck.CardsInCollection[i]);
             _Deckpile.Add(card); //at the start, all cards are in the deck, none in hand, none in discard
             card.gameObject.SetActive(false); //we will later activate the cards when we draw them, for now we just want to build the pool
@@ -94,12 +97,20 @@ public class Deck : MonoBehaviour
 
     private void OnEnable()
     {
-        TurnSystem.Instance.OnPlayerTurnStart.AddListener(DrawHand);
+        if (TurnSystem.Instance != null)
+        {
+            TurnSystem.Instance.OnPlayerTurnStart.AddListener(DrawHand);
+        }
+        //TurnSystem.Instance.OnPlayerTurnStart.AddListener(DrawHand);
     }
 
     private void OnDisable()
     {
-        TurnSystem.Instance.OnPlayerTurnStart.RemoveListener(DrawHand);
+        if (TurnSystem.Instance != null)
+        {
+            TurnSystem.Instance.OnPlayerTurnStart.RemoveListener(DrawHand);
+        }
+        //TurnSystem.Instance.OnPlayerTurnStart.RemoveListener(DrawHand);
     }
 
    /* void UpdateCardSprite()

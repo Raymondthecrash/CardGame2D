@@ -32,6 +32,7 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Clear();
 
         // Spawn new enemies
+        //stil need to add in multiple enemies
         foreach (var enemyPrefab in enemyPrefabs)
         {
             EnemyUnit newEnemy = Instantiate(enemyPrefab, enemySpawnPoint.position, Quaternion.identity);
