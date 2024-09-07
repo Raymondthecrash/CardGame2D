@@ -95,6 +95,15 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(TransitionToState(GameState.PlayerTurn));
     }
 
+<<<<<<< Updated upstream
+=======
+    public void StartPlayerTurn()
+    {
+        Deck.Instance.DrawHand();
+
+    }
+
+>>>>>>> Stashed changes
     public void EndPlayerTurn()
     {
         if (CurrentState != GameState.PlayerTurn) return;

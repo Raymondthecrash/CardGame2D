@@ -2,7 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+<<<<<<< Updated upstream
 
+=======
+/*Alternative SetUp code
+     *  public void SetUp(CardScript cardData)
+    {
+        if (_cardUI != null)
+        {
+            _cardUI.SetUp(cardData); // Pass the CardScript data to CardUI
+        }
+        else
+        {
+            Debug.LogError("_cardUI is null!");
+        }
+    }
+     */
+[RequireComponent(typeof(CardUI))]
+>>>>>>> Stashed changes
 public class Card : MonoBehaviour
 {
     #region Fields and Properties
@@ -14,10 +31,27 @@ public class Card : MonoBehaviour
 
     #region Methods
 
+<<<<<<< Updated upstream
     public void SetUp(CardScript data)
     {
         CardData = data;
         GetComponent<CardUI>().SetCardImage();
+=======
+    
+    public void SetUp(CardScript data)
+    {
+        //make sue to check later if this double setup's or not
+        if (_cardUI != null)
+        {
+            _cardUI.SetCard(this); // Pass the CardScript data to CardUI
+            //GetComponent<CardUI>().SetCardImage();
+        }
+        else
+        {
+            Debug.LogError("_cardUI is null!");
+        }
+        
+>>>>>>> Stashed changes
     }
     private void PlayCard()
     {

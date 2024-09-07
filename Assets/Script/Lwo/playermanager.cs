@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     {
         return currentHealth <= 0;
     }
-
+   
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
